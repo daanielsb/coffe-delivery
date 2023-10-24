@@ -1,8 +1,12 @@
 import { BenefitsContainer, IntroContainer, IntroContent, IntroTitle } from "./style";
 import introImg from '../../../../assets/intro-coffe.svg'
 import { RegularText } from "../../../../components/typography";
+import { InfoWithIcon } from "../../../../components/infoWithIcon";
+import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
+import { useTheme } from "styled-components";
 
 export function Intro(){
+    const { colors } = useTheme();
     return(
         <IntroContainer>
             <IntroContent className="container">
@@ -14,12 +18,29 @@ export function Intro(){
                         <RegularText size="l" color="subtitle" as='h3'>
                             Com o Coffe Delivery voce recebe seu café onde estiver, a qualquer hora
                         </RegularText>                   
-                    </section>
+                    </section>npm
                     <BenefitsContainer>
-                        <p>1</p>
-                        <p>2</p>
-                        <p>3</p>
-                        <p>4</p>                  
+                        <InfoWithIcon 
+                            iconBg={colors["brand-yellow-dark"]}
+                            icon={<ShoppingCart weight="fill"/>}
+                            text='Compra simples e segura'
+                        />
+                        <InfoWithIcon 
+                            iconBg={colors["base-text"]}
+                            icon={<Package weight="fill"/>}
+                            text='Embalagem mantém o café intacto'
+                        />
+                        <InfoWithIcon 
+                            iconBg={colors["brand-yellow"]}
+                            icon={<Timer weight="fill"/>}
+                            text='Entrega rápida e rastreada'
+                        />
+                        <InfoWithIcon 
+                            iconBg={colors["brand-purple"]}
+                            icon={<Coffee weight="fill"/>}
+                            text='O café chega fresquinho até você'
+                        />
+                                        
                     </BenefitsContainer>
                 </div>
                 <img src={introImg}/>
