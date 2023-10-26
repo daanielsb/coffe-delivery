@@ -8,6 +8,19 @@ export const QuantityInputContainer = styled.div`
     justify-content: space-between;
     gap: 4px;
     border-radius: 6px;
+    padding: 0.5rem;
+
+    input {
+        text-align: center;
+        width: 100%;
+        background: none;
+        border: none;
+        color: ${({theme})=> theme.colors["base-title"]};
+
+        &:focus {
+            outline: none;
+        }
+    }
 
 
 `
@@ -15,6 +28,6 @@ export const QuantityInputContainer = styled.div`
 export const IconWrapper = styled.button.attrs({
     type: "button"
 })`
-    
+   
 `
     

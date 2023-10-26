@@ -1,6 +1,8 @@
+import { ShoppingCart } from 'phosphor-react'
 import caffe1 from '../../../../assets/coffe1.svg'
+import { QuantityInput } from '../../../../components/QuantityInput'
 import { RegularText, TitleText } from '../../../../components/typography'
-import { CardFooter, CoffeCardContainer, Description, Name, Tags } from './styles'
+import { AddCartWrapper, CardFooter, CoffeCardContainer, Description, Name, Tags } from './styles'
 
 
 export function CoffeCard() {
@@ -19,7 +21,12 @@ export function CoffeCard() {
                     <RegularText size='s'>R$</RegularText>
                     <TitleText size='m' color='text' as="strong">9,90</TitleText>
                 </div>
-
+                <AddCartWrapper>
+                    <QuantityInput/>
+                    <button>
+                    <ShoppingCart size={22} weight='fill'/>
+                    </button>
+                </AddCartWrapper>
             </CardFooter>
         </CoffeCardContainer>
 
