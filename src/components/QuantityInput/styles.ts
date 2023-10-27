@@ -28,6 +28,20 @@ export const QuantityInputContainer = styled.div`
 export const IconWrapper = styled.button.attrs({
     type: "button"
 })`
+    width: 0.875;
+    height: 0.875rem;
+    border: none;
+    background: none;
+    color: ${({theme})=> theme.colors["brand-purple"]};
+    transition: 0.4s;
+
+    &:disabled {
+        opacity: 0.4;
+    }
+
+    &:not(:disabled):hover {
+        color: ${({theme})=> theme.colors["brand-purple-dark"]};
+    }
    
 `
     

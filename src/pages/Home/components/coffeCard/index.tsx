@@ -1,25 +1,42 @@
 import { ShoppingCart } from 'phosphor-react'
-import caffe1 from '../../../../assets/coffe1.svg'
 import { QuantityInput } from '../../../../components/QuantityInput'
 import { RegularText, TitleText } from '../../../../components/typography'
 import { AddCartWrapper, CardFooter, CoffeCardContainer, Description, Name, Tags } from './styles'
+import { formatMoney } from '../../../../utils/formatMoney'
+
+export interface Coffee {
+    id: number;
+    tags: string[];
+    name: string;
+    description: string;
+    photo: string;
+    price: number;
+}
+
+interface CoffeProps{
+    coffee: Coffee;
+}
+
+export function CoffeCard({coffee}: CoffeProps) {
+    const formattedPrice = formatMoney(coffee.price);
 
 
-export function CoffeCard() {
+
     return(
         <CoffeCardContainer>
-            <img src={caffe1}/>
+            <img src={`/coffees/${coffee.photo}`} />
             <Tags>
-                 <span>tradicional</span>
-                 <span>com leite</span>
+                {coffee.tags.map((tag) => (
+                    <span key={`${coffee.id}${tag}`}>{tag}</span>
+                ))}
             </Tags>
-            <Name>Expresso Tradicional</Name>
-            <Description>O Tradicional café feito com água quente e grãos moídos</Description>
+            <Name>{coffee.name}</Name>
+            <Description>{coffee.description}</Description>
 
             <CardFooter>
                 <div>
                     <RegularText size='s'>R$</RegularText>
-                    <TitleText size='m' color='text' as="strong">9,90</TitleText>
+                    <TitleText size='m' color='text' as="strong">{formattedPrice}</TitleText>
                 </div>
                 <AddCartWrapper>
                     <QuantityInput/>
