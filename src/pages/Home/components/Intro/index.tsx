@@ -18,7 +18,7 @@ export function Intro(){
                         <RegularText size="l" color="subtitle" as='h3'>
                             Com o Coffe Delivery voce recebe seu café onde estiver, a qualquer hora
                         </RegularText>                   
-                    </section>npm
+                    </section>
                     <BenefitsContainer>
                         <InfoWithIcon 
                             iconBg={colors["brand-yellow-dark"]}
