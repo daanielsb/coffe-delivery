@@ -30,14 +30,14 @@ export function CoffeCard({coffee}: CoffeProps) {
         setQuantity(state => state - 1) 
      }
 
-    const { addCoffeToCart } = useCart()
+    const { addCoffeeToCart } = useCart()
 
     function handleAddToCart() {
-        const coffeToAdd = {
+        const coffeeToAdd = {
             ...coffee,
-            quantity: 1,
+            quantity,
         }
-        addCoffeToCart(coffeToAdd)
+        addCoffeeToCart(coffeeToAdd)
     }
 
 

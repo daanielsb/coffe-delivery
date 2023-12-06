@@ -1,16 +1,24 @@
-import { ActionsContainer, CoffeCartCardContainer, RemoveButton } from "./styles";
-import CoffeTemp from "/coffees/cremoso.svg"
+import { ActionsContainer, CoffeeCartCardContainer, RemoveButton } from "./styles";
 import { RegularText } from "../../../../components/typography";
 import { QuantityInput } from "../../../../components/QuantityInput";
 import { Trash } from "phosphor-react";
+import { CartItem } from "../../../../context/CartContext";
+import { formatMoney } from "../../../../utils/formatMoney";
 
-export function CoffeCartCard() {
+interface CoffeeCartCardProps {
+    coffee: CartItem
+}
+
+export function CoffeeCartCard({ coffee }: CoffeeCartCardProps) {
+    const coffeeTotal = coffee.price * coffee.quantity
+    const formattedPrice = formatMoney(coffeeTotal);
+
     return(
-        <CoffeCartCardContainer>
+        <CoffeeCartCardContainer>
             <div>
-                <img src={CoffeTemp}/>
+                <img src={`/coffees/${coffee.photo}`} />
                 <div>
-                    <RegularText color="subtitle">Expresso Tradicional</RegularText>
+                    <RegularText color="subtitle">{coffee.name}</RegularText>
                     <ActionsContainer>
                         <QuantityInput size="small"/>
                         <RemoveButton>
@@ -20,8 +28,8 @@ export function CoffeCartCard() {
                     </ActionsContainer>
                 </div>
             </div>
-            <p>R$9,90</p>
-        </CoffeCartCardContainer>
+            <p>R$ {formattedPrice}</p>
+        </CoffeeCartCardContainer>
 
     )
 }

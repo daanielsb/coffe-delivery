@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
-import { Coffee } from "../pages/Home/components/coffeCard";
+import { Coffee } from "../pages/Home/components/coffeeCard";
 import { produce } from "immer";
 
 export interface CartItem extends Coffee {
@@ -8,7 +8,8 @@ export interface CartItem extends Coffee {
 
 interface CartContextType{
     cartItems: CartItem[];
-    addCoffeToCart: (coffe: CartItem) => void
+    cartQuantity: number;
+    addCoffeeToCart: (coffee: CartItem) => void
 }
 
 interface CartContextProviderProps{
@@ -20,26 +21,30 @@ export const CartContext = createContext({} as CartContextType)
 export function CartContextProvider({ children} : CartContextProviderProps) {
     const [cartItems, setCartItems] = useState<CartItem[]>([])
 
-    function addCoffeToCart(coffe: CartItem){
-        const coffeAlreadyExistInCart = cartItems.findIndex(
-            cartItem => cartItem.id === coffe.id
+    const cartQuantity = cartItems.length
+
+    function addCoffeeToCart(coffee: CartItem) {
+        const coffeeAlreadyExistsInCart = cartItems.findIndex(
+          (cartItem) => cartItem.id === coffee.id
         );
 
         const newCart = produce(cartItems, (draft) => {
-            if(coffeAlreadyExistInCart <0 ){
-                draft.push(coffe)
+            if(coffeeAlreadyExistsInCart < 0 ){
+                draft.push(coffee)
             } else {
-                draft[coffeAlreadyExistInCart].quantity += coffe.quantity
+                draft[coffeeAlreadyExistsInCart].quantity += coffee.quantity
             }
         })
 
         setCartItems(newCart)
+
+        console.log(cartItems)
         
 
     }
     
     return(
-        <CartContext.Provider value={{ cartItems, addCoffeToCart }}>
+        <CartContext.Provider value={{ cartItems, cartQuantity, addCoffeeToCart }}>
             {children}
         </CartContext.Provider>
     )

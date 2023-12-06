@@ -6,7 +6,7 @@ export const OurCoffesContainer = styled.section`
     
 `
 
-export const CoffeList = styled.div`
+export const CoffeeList = styled.div`
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);

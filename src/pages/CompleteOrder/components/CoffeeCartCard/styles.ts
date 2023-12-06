@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const CoffeCartCardContainer = styled.div`
+export const CoffeeCartCardContainer = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
